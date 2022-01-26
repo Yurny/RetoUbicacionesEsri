@@ -3,16 +3,16 @@
  <meta charset="utf-8">
  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
  <title>ArcGIS API for JavaScript Tutorials: Find a route and directions</title>
- <style>
-  html, body, #viewDiv {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-  }
- </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.22/"></script>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+   </style>
 
   <script>
 
@@ -37,7 +37,7 @@
     const view = new MapView({
       container: "viewDiv",
       map: map,
-      center: [ -74.08175,4.60971], //Longitude, latitude
+      center: [ -74.08175,4.60971], //Longitude, latitude (ubicación Bogotá)
       zoom: 12
     });
 
@@ -50,7 +50,7 @@
       } else if (view.graphics.length === 1) {
         addGraphic("destination", event.mapPoint);
 
-        getRoute(); // Call the route service
+        getRoute(); // Llamando el servicio de rutas
 
       } else {
         view.graphics.removeAll();
@@ -100,7 +100,7 @@
            directions.style.padding = "15px 15px 15px 30px";
            const features = data.routeResults[0].directions.features;
 
-           // Show each direction
+           // Mostrando las direcciones
            features.forEach(function(result,i){
              const direction = document.createElement("li");
              direction.innerHTML = result.attributes.text + " (" + result.attributes.length.toFixed(2) + " miles)";
